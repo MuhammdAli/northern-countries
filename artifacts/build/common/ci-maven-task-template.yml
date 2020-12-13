@@ -1,0 +1,13 @@
+steps:
+  - task: Maven@3
+    displayName: Maven Build and Test
+    inputs:
+      mavenPomFile: "$(System.DefaultWorkingDirectory)/$(sourceDirectory)/pom.xml"
+      goals: "package"
+      testResultsFiles: "**/surefire-reports/TEST-*.xml"
+      publishJUnitResults: true
+      codeCoverageToolOption: JaCoCo
+      mavenAuthenticateFeed: false
+      effectivePomSkip: false
+      sonarQubeRunAnalysis: true
+      sqMavenPluginVersionChoice: 'latest'

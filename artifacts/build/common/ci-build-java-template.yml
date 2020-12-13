@@ -1,0 +1,10 @@
+stages:
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: Build
+        steps:
+          - template: ./ci-java-prepare-sonarcloud.yml
+          - template: ./ci-maven-task-template.yml
+          - template: ./ci-coverage-check-task-template.yml
+          - template: ./ci-java-analysis-sonarcloud.yml
